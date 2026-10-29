@@ -10,6 +10,7 @@
             --text-color: #f1f1f1;
             --accent-color: #d4af37;
             --card-bg: #1a1a1a;
+            --hover-color: #e6c547;
         }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -23,7 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 20px 40px;
             background: #111;
             border-bottom: 1px solid #333;
             position: sticky;
@@ -31,23 +32,28 @@
             z-index: 1000;
         }
         .logo img {
-            height: 50px;
+            height: 45px;
             object-fit: contain;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            margin-left: 20px;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
         nav a:hover {
             color: var(--accent-color);
         }
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('ANDY 1.jpg') no-repeat center center/cover;
+            padding: 90px 20px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('https://lh3.googleusercontent.com/d/14SzowusOpzUFBq2DMkacmAN_VD1e4fST') no-repeat center center/cover;
             min-height: 50vh;
             display: flex;
             flex-direction: column;
@@ -58,10 +64,19 @@
             font-size: 3.5rem;
             margin-bottom: 10px;
             letter-spacing: 2px;
+            color: var(--accent-color);
         }
         .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
+            font-size: 1.25rem;
+            color: #ddd;
+            max-width: 600px;
+        }
+        .hero-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .container {
             max-width: 1200px;
@@ -73,14 +88,15 @@
             margin-bottom: 40px;
         }
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             border-bottom: 2px solid var(--accent-color);
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
+            color: var(--text-color);
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
         .gallery-item {
@@ -99,40 +115,80 @@
             object-fit: cover;
             display: block;
         }
-        .epk-section {
-            text-align: center;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 8px;
-            margin-top: 60px;
+        /* Estilos para "Escucha el ambiente" */
+        .ambient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
-        .epk-section img {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        .ambient-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .ambient-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        .ambient-card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.3rem;
         }
         .btn {
             display: inline-block;
             background: var(--accent-color);
             color: #000;
-            padding: 12px 30px;
+            padding: 10px 24px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 4px;
             transition: background 0.3s;
+            font-size: 0.95rem;
         }
         .btn:hover {
-            background: #e6c547;
+            background: var(--hover-color);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--accent-color);
+        }
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
+        .center-btn {
+            text-align: center;
+            margin-top: 40px;
         }
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 50px 20px;
             background: #111;
-            color: #777;
+            color: #888;
             border-top: 1px solid #333;
             margin-top: 60px;
+        }
+        .social-links {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
@@ -140,57 +196,116 @@
 
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Andy Cano Logo">
+            <img src="https://lh3.googleusercontent.com/d/14SzowusOpzUFBq2DMkacmAN_VD1e4fST" alt="Andy Cano Logo">
         </div>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#galeria">Galería</a>
-            <a href="#epk">EPK</a>
+            <a href="#ambiente">Escucha el ambiente</a>
+            <a href="#mas-andy">Más de Andy</a>
+            <a href="https://wa.me/525644090145" target="_blank" style="color: #25d366; font-weight: bold;">WhatsApp</a>
         </nav>
     </header>
 
     <section id="inicio" class="hero">
         <h1>Andy Cano</h1>
-        <p>Portfolio Oficial • Artista Visual</p>
+        <p>Portfolio Oficial • Artista & Espectáculos</p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/525644090145" target="_blank" class="btn">Contratación Directa</a>
+            <a href="https://drive.google.com/drive/folders/10Xb8jgGgnMNgl6PgPo4sRe0oCh7E_iYE?usp=drive_link" target="_blank" class="btn btn-secondary">Ver Carpeta Completa</a>
+        </div>
     </section>
 
-    <div class="container" id="galeria">
-        <div class="section-title">
-            <h2>Galería</h2>
-        </div>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="ANDY 1.jpg" alt="Andy Cano 1">
+    <div class="container">
+        
+        <!-- Galería Principal (ANDY 1 a 10) -->
+        <div id="galeria">
+            <div class="section-title">
+                <h2>Galería</h2>
             </div>
-            <div class="gallery-item">
-                <img src="Captura.PNG" alt="Captura">
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/14SzowusOpzUFBq2DMkacmAN_VD1e4fST" alt="Andy 1"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1gTetvoMHhelfxYFcGda8HjPdO2JffWqW" alt="Andy 2"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1UBP4cJ8c1Qmi847YQpg4J8598pQ_2v2Z" alt="Andy 3"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1hDluzzYJ-9_Itp9TvHqQ1ysDcbkcbx5Z" alt="Andy 4"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1nFxd56Kd6wkJN-ju49yIu6LGYNGQGyfC" alt="Andy 5"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1be3PjzRli5D1cwTrW3mvJZmczzuML92d" alt="Andy 6"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1WeUJilYsHjQg2hmo7J1Y9rS7IefGhTya" alt="Andy 7"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1bnQoUj7GLJEqxF3UbA6bXEnVzZzG5A17" alt="Andy 8"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1vT6pnV4cuSpo_8irPf_YQ41OH0l4SnHz" alt="Andy 9"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1I86oRQrtcePXzvvsW7xtVx-lfHjXoEMZ" alt="Andy 10"></div>
             </div>
-            <div class="gallery-item">
-                <img src="2.png" alt="Obra 2">
-            </div>
-            <div class="gallery-item">
-                <img src="3.png" alt="Obra 3">
-            </div>
-            <div class="gallery-item">
-                <img src="4.png" alt="Obra 4">
-            </div>
-            <div class="gallery-item">
-                <img src="861544152_122095139469526673_294096232183297714_n.jpg" alt="Obra 6">
+            <div class="center-btn">
+                <a href="https://drive.google.com/drive/folders/10Xb8jgGgnMNgl6PgPo4sRe0oCh7E_iYE?usp=drive_link" target="_blank" class="btn">📂 Explorar todas las fotos en Drive</a>
             </div>
         </div>
 
-        <div class="epk-section" id="epk">
-            <h2>EPK / Dossier</h2>
-            <p>Conoce la trayectoria y propuesta artística.</p>
-            <br>
-            <img src="EPK_SOY_ANDY_CANO.pdf.png" alt="EPK Andy Cano">
-            <br><br>
-            <a href="EPK_SOY_ANDY_CANO.pdf.png" target="_blank" class="btn">Ver Imagen Completa</a>
+        <!-- Escucha el ambiente -->
+        <div id="ambiente" style="margin-top: 80px;">
+            <div class="section-title">
+                <h2>Escucha el ambiente</h2>
+            </div>
+            <p style="text-align: center; color: #aaa; margin-bottom: 20px;">Disfruta de las interpretaciones en vivo para cada ocasión especial.</p>
+            <div class="ambient-grid">
+                <div class="ambient-card">
+                    <h3>Eventos</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Presentaciones en vivo llenas de energía.</p>
+                    <a href="https://drive.google.com/file/d/14sXv8hS0f89X5B991c4S3F-0AZSsgb0D/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+                <div class="ambient-card">
+                    <h3>Bares</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Ambiente íntimo y bohemio.</p>
+                    <a href="https://drive.google.com/file/d/1rz0jpZAk5KhqAiFGuypyPeMYKPOZO7Iw/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+                <div class="ambient-card">
+                    <h3>A Capela</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">La pureza y potencia vocal al desnudo.</p>
+                    <a href="https://drive.google.com/file/d/14VuiXlYRSSnsYN9hp0b0kfs6lF6nRrY4/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+                <div class="ambient-card">
+                    <h3>Bodas</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Romantismo y elegancia para tu gran día.</p>
+                    <a href="https://drive.google.com/file/d/1v5-1Fj93J8AHoON6rmcj_DDqv-BF78Lx/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+                <div class="ambient-card">
+                    <h3>XV Años</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Música inolvidable para festejar.</p>
+                    <a href="https://drive.google.com/file/d/1J4V1sReO9PRY7AixwQa0j7SbBO6EDlYZ/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+                <div class="ambient-card">
+                    <h3>Serenatas</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">Detalles musicales que llegan al corazón.</p>
+                    <a href="https://drive.google.com/file/d/18_5f9Tgzsp8ATGqOe47NmZmH7tZZqkEo/view?usp=drive_link" target="_blank" class="btn btn-secondary" style="margin-top: 15px;">Escuchar / Ver</a>
+                </div>
+            </div>
         </div>
+
+        <!-- Más de Andy -->
+        <div id="mas-andy" style="margin-top: 80px;">
+            <div class="section-title">
+                <h2>Más de Andy</h2>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1XkSlRRoMdfsa4_kqd3oa5okalS2t0oAr" alt="Más Andy 1"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1eNvas7i6Va9CmeMZvNHFLrAxFjD8r1Pn" alt="Más Andy 2"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/178TIVj_8UP3-Udq_nwE8332qBnw3KZeU" alt="Más Andy 3"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/18ejEYyPBCsKSbmZ5BOux-0DGyELHk0GL" alt="Más Andy 4"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1eIPK4Px3578keI_yKCtkPhfBrpmVeRu5" alt="Más Andy 5"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1ZPkjJomjfMA2MO-thW5DLRMRxQem0vX5" alt="Más Andy 6"></div>
+                <div class="gallery-item"><img src="https://lh3.googleusercontent.com/d/1brKFQK9Quvo2f9NaRw8zCZl0g9l0LeEm" alt="Más Andy 7"></div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 Andy Cano. Diseñado por Pulsar Digital Group. Todos los derechos reservados.</p>
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@soy.andy.cano" target="_blank">TikTok</a>
+            <a href="https://www.instagram.com/soyandycano" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/SoyAndyCanoOficial?locale=es_LA" target="_blank">Facebook</a>
+            <a href="https://wa.me/525644090145" target="_blank">WhatsApp</a>
+        </div>
+        <p>&copy; 2026 Andy Cano. Todos los derechos reservados.</p>
     </footer>
 
 </body>
